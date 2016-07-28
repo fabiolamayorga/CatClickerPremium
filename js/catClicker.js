@@ -62,7 +62,7 @@ $(function(){
 		render: function() {
 
 		}
-	};
+	},
 
 	var catListView = {
 		init: function() {
@@ -71,23 +71,23 @@ $(function(){
 		},
 
 		render: function(){
-            var htmlStr = '';
+            var htmlStr = '',
+            	currentCat;
             octopus.getCats().forEach(function(cats, index){
             	if (index === 0) {
-	                htmlStr += '<li class="catItem currentCat">'+
-	                        cats.name +
-	                    '</li>';            		
-            	}else {
-	                htmlStr += '<li class="catItem">'+
-	                        cats.name +
-	                    '</li>';
-                }
+            		currentCat = index;
+            	}
+
+                htmlStr += '<li class="catItem">'+
+                        cats.name +
+                    '</li>';
             });
             this.catList.html(htmlStr);
 		},
 
-
-
+		getCurrentCat: function() {
+			
+		}
 	};
 
 	octopus.init();
