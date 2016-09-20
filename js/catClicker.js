@@ -43,6 +43,7 @@ $(function(){
         init: function() {
             model.init();
             catListView.init();
+            catView.init();
         },
 
         increaseCounter: function() {
@@ -52,17 +53,20 @@ $(function(){
         clickFunction: function(currentCat) {
 
         }
-	}
+	};
 
 	var catView = {
 		init: function() {
-
+			this.catView = $(".catView");
+			this.counter = $(".counter");
+			this.render();
 		},
 
 		render: function() {
-
+			var currentCat = catListView.getCurrentCat;
+			console.log(currentCat);
 		}
-	},
+	};
 
 	var catListView = {
 		init: function() {
@@ -73,9 +77,13 @@ $(function(){
 		render: function(){
             var htmlStr = '',
             	currentCat;
+
             octopus.getCats().forEach(function(cats, index){
             	if (index === 0) {
             		currentCat = index;
+            		htmlStr += '<li class="catItem currentCat">'+
+                        cats.name +
+                    '</li>';
             	}
 
                 htmlStr += '<li class="catItem">'+
@@ -86,7 +94,7 @@ $(function(){
 		},
 
 		getCurrentCat: function() {
-			
+			return currentCat;
 		}
 	};
 
